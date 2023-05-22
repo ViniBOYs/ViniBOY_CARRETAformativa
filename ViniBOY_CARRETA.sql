@@ -90,7 +90,8 @@ insert into acessRule (acessRuleName, acessRuleDescription) values
 ('Admin', 'Acesso total à aplicação'),
 ('Gestor', 'Acesso ao cadastro de usuários, cancelamento de eventos, ambientes, entre outros.'),
 ('Usuário', 'Permite fazer reservas, mas não pode cadastrar nenhum usuário nem cancelar eventos'),
-('Visitante', 'Permite a inscrição em um evento participante');
+('Visitante', 'Permite a inscrição em um evento participante')
+('Desativado', 'Usuario desligado da aplicação');
 
 
 insert into user (nome, dataDeNascimento,dataDeCadastro, senha, email, ocupacoesFK, acessRulesFK) values
