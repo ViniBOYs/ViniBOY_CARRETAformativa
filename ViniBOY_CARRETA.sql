@@ -77,6 +77,65 @@ create table ticket(
     foreign	key(eventoFK) references evento(id)
 );
 
+# Imputs
+
+insert into ocupacoes (ocupacaoNome, descricao) values
+('Coordenador', 'Responsável pela coordenação geral'),
+('Orientador', 'Responsável pela orientação dos alunos'),
+('Assistente Social', 'Responsável pelo suporte social'),
+('Secretária', 'Responsável pelas atividades administrativas');
+
+
+insert into acessRule (acessRuleName, acessRuleDescription) values
+('Admin', 'Acesso total à aplicação'),
+('Gestor', 'Acesso ao cadastro de usuários, cancelamento de eventos, ambientes, entre outros.'),
+('Usuário', 'Permite fazer reservas, mas não pode cadastrar nenhum usuário nem cancelar eventos'),
+('Visitante', 'Permite a inscrição em um evento participante');
+
+
+insert into user (nome, dataDeNascimento,dataDeCadastro, senha, email, ocupacoesFK, acessRulesFK) values
+('Usuário 1', '1990-01-20',now(), 'senha1', 'user1@vinimail.com', 1, 1),
+('Usuário 2', '1991-02-20',now(), 'senha2', 'user2@vinimail.com', 2, 2),
+('Usuário 3', '1992-03-20',now(), 'senha3', 'user3@vinimail.com', 3, 3),
+('Usuário 4', '1993-04-20',now(), 'senha4', 'user4@vinimail.com', 4, 4),
+('Usuário 5', '1994-05-20',now(), 'senha5', 'user5@vinimail.com', 1, 2),
+('Usuário 6', '1995-06-20',now(), 'senha6', 'user6@vinimail.com', 2, 3),
+('Usuário 7', '1996-07-20',now(), 'senha7', 'user7@vinimail.com', 3, 4),
+('Usuário 8', '1997-08-20',now(), 'senha8', 'user8@vinimail.com', 4, 1),
+('Usuário 9', '1998-09-20',now(), 'senha9', 'user9@vinimail.com', 1, 3),
+('Usuário 10', '1999-10-20',now(), 'senha10', 'user10@vinimail.com', 2, 4),
+('Usuário 11', '1980-01-05',now(), 'senha11', 'user11@vinimail.com', 3, 1),
+('Usuário 12', '1981-02-05',now(), 'senha12', 'user12@vinimail.com', 4, 2),
+('Usuário 13', '1982-03-05',now(), 'senha13', 'user13@vinimail.com', 1, 4),
+('Usuário 14', '1983-04-05',now(), 'senha14', 'user14@vinimail.com', 2, 1),
+('Usuário 15', '1984-05-05',now(), 'senha15', 'user15@vinimail.com', 3, 2);
+
+insert into equipamentos (nomeEquipamento) values
+('Projetor'),
+('TV Smart'),
+('Ar condicionado'),
+('WorkStation'),
+('Cadeira Gamer');
+
+insert into local (nomeLocal, bloco, lotMax) values
+('Laboratório de Eletrônica 1', A, 40),
+('Sala de Reuniões 2', B, 15),
+('Auditório Principal', C, 80),
+('Sala de Estudos 3', D, 20);
+
+insert into evento (nomeEvento, localFK, totVagas, vagasOcupadas, diaHoraInicioEv, diaHoraFinalEv, inicioCheckin, finalCheckin ) values
+('Evento 1', 1, 45, 0, '2023-05-21 10:00:00', '2023-05-21 12:00:00','2023-04-21 08:30:00', '2023-05-21 08:30:00'),
+('Evento 2', 2, 17, 0, '2023-05-22 14:00:00', '2023-05-22 16:00:00','2023-04-22 12:30:00', '2023-05-22 12:30:00'),
+('Evento 3', 3, 80, 0, '2023-05-23 09:30:00', '2023-05-23 11:30:00','2023-04-23 09:00:00', '2023-05-23 09:00:00'),
+('Evento 4', 4, 18, 0, '2023-05-24 16:30:00', '2023-05-24 18:30:00','2023-04-24 16:00:00', '2023-05-24 16:00:00'),
+('Evento 5', 1, 38, 0, '2023-05-25 13:00:00', '2023-05-25 15:00:00','2023-04-25 12:30:00', '2023-05-25 12:30:00'),
+('Evento 6', 2, 10, 0, '2023-05-26 11:00:00', '2023-05-26 13:00:00','2023-04-26 10:30:00', '2023-05-26 10:30:00');
+
+
+
+
+
+
 
 # Selects
 
