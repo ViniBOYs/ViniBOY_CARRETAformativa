@@ -1,5 +1,6 @@
 create database formativaBOY;
 use formativaBOY;
+drop database formativaBOY;
 
 create table ocupacoes(
 	id bigint not null auto_increment,
@@ -34,7 +35,7 @@ create table local(
 	id bigint not null auto_increment,
     nomeLocal varchar(100) not null,
     lotMax int not null,
-    bloco varchar(1) not null,
+    bloco enum('A','B','C','D') not null,
 	primary key(id)
 );
 
@@ -90,7 +91,7 @@ insert into acessRule (acessRuleName, acessRuleDescription) values
 ('Admin', 'Acesso total à aplicação'),
 ('Gestor', 'Acesso ao cadastro de usuários, cancelamento de eventos, ambientes, entre outros.'),
 ('Usuário', 'Permite fazer reservas, mas não pode cadastrar nenhum usuário nem cancelar eventos'),
-('Visitante', 'Permite a inscrição em um evento participante')
+('Visitante', 'Permite a inscrição em um evento participante'),
 ('Desativado', 'Usuario desligado da aplicação');
 
 
@@ -119,10 +120,10 @@ insert into equipamentos (nomeEquipamento) values
 ('Cadeira Gamer');
 
 insert into local (nomeLocal, bloco, lotMax) values
-('Laboratório de Eletrônica 1', A, 40),
-('Sala de Reuniões 2', B, 15),
-('Auditório Principal', C, 80),
-('Sala de Estudos 3', D, 20);
+('Laboratório de Eletrônica 1', 'A', 40),
+('Sala de Reuniões 2', 'B', 15),
+('Auditório Principal', 'C', 80),
+('Sala de Estudos 3', 'D', 20);
 
 insert into evento (nomeEvento, localFK, totVagas, vagasOcupadas, diaHoraInicioEv, diaHoraFinalEv, inicioCheckin, finalCheckin ) values
 ('Evento 1', 1, 45, 0, '2023-05-21 10:00:00', '2023-05-21 12:00:00','2023-04-21 08:30:00', '2023-05-21 08:30:00'),
@@ -215,5 +216,4 @@ inner join ticket t on u.id = t.userFK
 where u.dataDeCadastro between '2023-05-23 09:30:00' AND '2023-05-23 11:30:00'
 group by u.id
 having count(t.id) >= 2;
-
 
