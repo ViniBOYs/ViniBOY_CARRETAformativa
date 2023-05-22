@@ -34,7 +34,7 @@ create table local(
 	id bigint not null auto_increment,
     nomeLocal varchar(100) not null,
     lotMax int not null,
-    blocoFK bigint not null,
+    bloco varchar(1) not null,
 	primary key(id)
 );
 
