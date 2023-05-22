@@ -77,3 +77,83 @@ create table ticket(
     foreign	key(eventoFK) references evento(id)
 );
 
+
+# Selects
+
+# 1
+select l.nomelocal
+from local l
+inner join evento e on l.id = e.localFK;
+
+#2
+select l.nomelocal
+from local l
+left join evento e on l.id = e.localFK
+where e.id is null;
+
+# 3
+select * from evento
+where diaHoraInicioEv >= '2023-05-21 10:00:00' and diaHoraFinalEv <= '2023-05-21 12:00:00';
+
+# 4
+select u.nome from user u
+inner join ticket t on u.id = t.userFK;
+
+# 5
+select e.nomeEvento, u.nome from Evento e
+inner join ticket t on e.id = t.eventoFK
+inner join user u on t.userFK = u.id
+where t.horarioEmissão < e.diaHoraInicioEv;
+
+# 6
+select u.nome, count(t.id) as NumeroDeRegistros
+from user u
+left join ticket t on u.id = t.userFK
+group by u.id;
+
+# 7
+select e.nomeEvento, count(t.id) as NumeroDeCheckins
+from Evento e
+left join ticket t on e.id = t.eventoFK
+group by e.id
+order by NumeroDeCheckins desc
+limit 1;
+
+# 8
+select e.nomeEvento, count(t.id) AS NumeroDeCheckins
+from Evento e
+left join ticket t on e.id = t.eventoFK
+group by e.id
+order by NumeroDeCheckins asc
+limit 1;
+
+# 9
+select l.nomelocal, avg(e.vagasOcupadas) as MediaParticipantes
+from local l
+left join evento e on l.id = e.localFK
+group by l.id;
+
+# 10
+select e.nomeEvento
+from evento e
+where e.vagasOcupadas < e.totVagas and e.finalCheckin > now();
+
+# 11
+select e.nomeEvento
+from evento e
+where e.vagasOcupadas >= e.totVagas and e.diaHoraInicioEv > now();
+
+# 12
+select e.nomeEvento
+from evento e
+where e.vagasOcupadas < e.TotVagas and e.finalCheckin > now();
+
+# 13
+select u.nome
+from user u
+inner join ticket t on u.id = t.userFK
+where u.dataDeCadastro between '2023-05-23 09:30:00' AND '2023-05-23 11:30:00'
+group by u.id
+having count(t.id) >= 2;
+
+
