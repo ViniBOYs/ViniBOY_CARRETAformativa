@@ -60,6 +60,7 @@ create table evento(
     localFK bigint not null,
     totVagas int not null,
     vagasOcupadas int not null,
+    vagas int not null,
     diaHoraInicioEv datetime not null,
     diaHoraFinalEv datetime not null,
     inicioCheckin datetime not null,
